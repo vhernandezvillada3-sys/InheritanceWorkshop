@@ -7,51 +7,40 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("=== TESTING GEOMETRIC FIGURES ===\n");
+        Console.WriteLine("=== TESTING ALL GEOMETRIC FIGURES ===\n");
 
         try
         {
-            // Lista para demostrar polimorfismo
             var figures = new List<GeometricFigure>();
 
-            // Triangle
-            var triangle = new Triangle(3, 4, 5, 4)
-            {
-                Name = "Triangle",
-                Color = "Red"
-            };
-            figures.Add(triangle);
+            // Square
+            figures.Add(new Square(4) { Name = "Square" });
 
-            // Trapeze
-            var trapeze = new Trapeze(4, 4.5, 3, 4, 5)
-            {
-                Name = "Trapezoid",
-                Color = "Brown"
-            };
-            figures.Add(trapeze);
+            // Rectangle
+            figures.Add(new Rectangle(5, 3) { Name = "Rectangle" });
 
-            // CIRCLE - Nueva figura
-            var circle = new Circle(2.5)
-            {
-                Name = "Circle",
-                Color = "Blue"
-            };
-            figures.Add(circle);
+            // Parallelogram
+            figures.Add(new Parallelogram(6, 4, 3) { Name = "Parallelogram" });
 
-            // Mostrar todas las figuras (polimorfismo)
+            // Rhombus
+            figures.Add(new Rhombus(5, 8, 6) { Name = "Rhombus" });
+
+            // TRIANGLE - DESCOMENTAR
+            figures.Add(new Triangle(3, 4, 5, 4) { Name = "Triangle" });
+
+            // TRAPEZE - DESCOMENTAR
+            figures.Add(new Trapeze(4, 4.5, 3, 4, 5) { Name = "Trapezoid" });
+
+            // CIRCLE - DESCOMENTAR
+            figures.Add(new Circle(2.5) { Name = "Circle" });
+
             foreach (var figure in figures)
             {
-                Console.WriteLine($"Figure: {figure.Name} {figure.Color}");
+                Console.WriteLine($"Figure: {figure.Name}");
                 Console.WriteLine($"Area: {figure.GetArea():F2}");
                 Console.WriteLine($"Perimeter: {figure.GetPerimeter():F2}");
                 Console.WriteLine();
             }
-
-            // Prueba específica de Circle
-            Console.WriteLine("--- CIRCLE DETAILS ---");
-            Console.WriteLine($"Radius: 2.5");
-            Console.WriteLine($"Area (π×r²): {Math.PI * 2.5 * 2.5:F2}");
-            Console.WriteLine($"Perimeter (2πr): {2 * Math.PI * 2.5:F2}");
         }
         catch (Exception ex)
         {

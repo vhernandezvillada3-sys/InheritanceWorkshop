@@ -1,12 +1,17 @@
-﻿
+﻿using System;
 
-namespace InheritanceWorkshop.Backend;  // ← ESTE NAMESPACE ES CRÍTICO
-
-public abstract class GeometricFigure
+namespace InheritanceWorkshop.Backend
 {
-    public string Name { get; set; } = string.Empty;
-    public string Color { get; set; } = string.Empty;
+    public abstract class GeometricFigure
+    {
+        public string Name { get; set; } = string.Empty;
 
-    public abstract double GetArea();
-    public abstract double GetPerimeter();
+        public abstract double GetArea();
+        public abstract double GetPerimeter();
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
+    }
 }

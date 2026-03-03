@@ -3,7 +3,7 @@
 public class Trapeze : Triangle  // Hereda de Triangle
 {
     // FIELDS - Solo lo específico de Trapeze
-    private double _d;  // Base mayor o lado adicional del trapecio
+    protected double _d;  // Base mayor o lado adicional del trapecio
 
     // PROPERTIES
     public double D
@@ -16,7 +16,7 @@ public class Trapeze : Triangle  // Hereda de Triangle
     public Trapeze(double a, double b, double c, double h, double d)
         : base(a, b, c, h)  // Llama al constructor de Triangle
     {
-        D = d;  // Valida y asigna D
+        _d = ValidateD(d);  // Valida y asigna D
     }
 
     // METHODS
@@ -43,8 +43,7 @@ public class Trapeze : Triangle  // Hereda de Triangle
     private double ValidateD(double d)
     {
         if (d <= 0)
-            throw new ArgumentOutOfRangeException(nameof(d),
-                "D must be greater than zero");
+            throw new ArgumentOutOfRangeException(nameof(d), "Side D must be positive");
         return d;
     }
 }
