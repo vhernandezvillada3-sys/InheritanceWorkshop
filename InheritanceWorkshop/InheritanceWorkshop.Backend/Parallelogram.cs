@@ -23,7 +23,7 @@ namespace GeometricFigures.Backend
         // Methods
         public override double GetArea()
         {
-            return _a * _h;
+            return _b * _h;
         }
 
         public override double GetPerimeter()
