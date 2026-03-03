@@ -1,51 +1,64 @@
-﻿namespace InheritanceWorkshop.Frontend
+﻿
+using InheritanceWorkshop.Backend;
+
+namespace InheritanceWorkshop.Frontend;
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        Console.WriteLine("=== TESTING GEOMETRIC FIGURES ===\n");
+
+        try
         {
-            Console.WriteLine("=== PRUEBA DE LA CLASE TRAPEZE ===\n");
+            // Lista para demostrar polimorfismo
+            var figures = new List<GeometricFigure>();
 
-            try
+            // Triangle
+            var triangle = new Triangle(3, 4, 5, 4)
             {
-                // Crear un trapecio
-                // Parámetros: base menor, base mayor, altura, lado1, lado2
-                var trapecio = new Trapeze(3, 5, 4, 4, 4.5)
-                {
-                    Name = "Trapecio Isósceles",
-                    Color = "Marrón"
-                };
+                Name = "Triangle",
+                Color = "Red"
+            };
+            figures.Add(triangle);
 
-                // Mostrar información
-                Console.WriteLine($"Figura: {trapecio.Name}");
-                Console.WriteLine($"Color: {trapecio.Color}");
-                Console.WriteLine($"Base menor: 3");
-                Console.WriteLine($"Base mayor: 5");
-                Console.WriteLine($"Altura: 4");
-                Console.WriteLine($"Lados no paralelos: 4 y 4.5");
+            // Trapeze
+            var trapeze = new Trapeze(4, 4.5, 3, 4, 5)
+            {
+                Name = "Trapezoid",
+                Color = "Brown"
+            };
+            figures.Add(trapeze);
+
+            // CIRCLE - Nueva figura
+            var circle = new Circle(2.5)
+            {
+                Name = "Circle",
+                Color = "Blue"
+            };
+            figures.Add(circle);
+
+            // Mostrar todas las figuras (polimorfismo)
+            foreach (var figure in figures)
+            {
+                Console.WriteLine($"Figure: {figure.Name} {figure.Color}");
+                Console.WriteLine($"Area: {figure.GetArea():F2}");
+                Console.WriteLine($"Perimeter: {figure.GetPerimeter():F2}");
                 Console.WriteLine();
-
-                // Calcular área y perímetro
-                double area = trapecio.GetArea();
-                double perimetro = trapecio.GetPerimeter();
-
-                Console.WriteLine($"Área: {area:F2}");
-                Console.WriteLine($"Perímetro: {perimetro:F2}");
-
-                // Verificar fórmulas
-                Console.WriteLine("\n--- VERIFICACIÓN ---");
-                Console.WriteLine($"Área esperada: ((5 + 3) * 4) / 2 = 16");
-                Console.WriteLine($"Perímetro esperado: 3 + 5 + 4 + 4.5 = 16.5");
-                Console.WriteLine($"Diferencia área: {Math.Abs(area - 16):F2}");
-                Console.WriteLine($"Diferencia perímetro: {Math.Abs(perimetro - 16.5):F2}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"ERROR: {ex.Message}");
             }
 
-            Console.WriteLine("\nPresione cualquier tecla para salir...");
-            Console.ReadKey();
+            // Prueba específica de Circle
+            Console.WriteLine("--- CIRCLE DETAILS ---");
+            Console.WriteLine($"Radius: 2.5");
+            Console.WriteLine($"Area (π×r²): {Math.PI * 2.5 * 2.5:F2}");
+            Console.WriteLine($"Perimeter (2πr): {2 * Math.PI * 2.5:F2}");
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"ERROR: {ex.Message}");
+        }
+
+        Console.WriteLine("\nPress any key to exit...");
+        Console.ReadKey();
     }
 }
