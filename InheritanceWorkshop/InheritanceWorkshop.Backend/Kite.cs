@@ -2,7 +2,7 @@
 
 namespace GeometricFigures.Backend
 {
-    public class Rectangle : Square
+    public class Kite : Rhombus
     {
         // Fields
         protected double _b;
@@ -15,7 +15,7 @@ namespace GeometricFigures.Backend
         }
 
         // Constructor
-        public Rectangle(string name, double a, double b) : base(name, a)
+        public Kite(string name, double a, double b, double d1, double d2) : base(name, a, d1, d2)
         {
             _b = ValidateB(b);
         }
@@ -23,7 +23,7 @@ namespace GeometricFigures.Backend
         // Methods
         public override double GetArea()
         {
-            return _a * _b;
+            return (_d1 * _d2) / 2;
         }
 
         public override double GetPerimeter()

@@ -1,13 +1,13 @@
 ﻿
+using System;
 
-
-namespace InheritanceWorkshop.Backend
+namespace GeometricFigures.Backend
 {
-    public class Triangle : Rectangle  // Hereda de Rectangle (según diagrama)
+    public class Triangle : Rectangle
     {
-        // Fields - específicos de Triangle
-        protected double _c;  // Base del triángulo?
-        protected double _h;  // Altura del triángulo?
+        // Fields
+        protected double _c;
+        protected double _h;
 
         // Properties
         public double C
@@ -23,28 +23,24 @@ namespace InheritanceWorkshop.Backend
         }
 
         // Constructor
-        public Triangle(double a, double b, double c, double h) : base(a, b)
+        public Triangle(string name, double a, double b, double c, double h) : base(name, a, b)
         {
             _c = ValidateC(c);
             _h = ValidateH(h);
         }
 
-        // Methods - Override de GetArea y GetPerimeter
+        // Methods
         public override double GetArea()
         {
-            // Área del triángulo: (base * altura) / 2
-            // Asumiendo que _c es la base y _h la altura
             return (_c * _h) / 2;
         }
 
         public override double GetPerimeter()
         {
-            // Perímetro del triángulo: suma de los 3 lados
-            // _a, _b vienen de Rectangle, _c es el tercer lado
             return _a + _b + _c;
         }
 
-        // Validation methods
+        // Validation
         private double ValidateC(double c)
         {
             if (c <= 0)

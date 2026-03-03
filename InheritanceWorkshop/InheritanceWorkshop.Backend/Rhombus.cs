@@ -1,56 +1,57 @@
-﻿namespace InheritanceWorkshop.Backend;
+﻿using System;
 
-public class Rhombus : Square
+namespace GeometricFigures.Backend
 {
-    // Fields
-    protected double _d1;  // Diagonal 1
-    protected double _d2;  // Diagonal 2
-
-    // Properties
-    public double D1
+    public class Rhombus : Square
     {
-        get => _d1;
-        set => _d1 = ValidateD1(value);
-    }
+        // Fields
+        protected double _d1;
+        protected double _d2;
 
-    public double D2
-    {
-        get => _d2;
-        set => _d2 = ValidateD2(value);
-    }
+        // Properties
+        public double D1
+        {
+            get => _d1;
+            set => _d1 = ValidateD1(value);
+        }
 
-    // Constructor
-    public Rhombus(double a, double d1, double d2) : base(a)
-    {
-        _d1 = ValidateD1(d1);
-        _d2 = ValidateD2(d2);
-    }
+        public double D2
+        {
+            get => _d2;
+            set => _d2 = ValidateD2(value);
+        }
 
-    // Methods
-    public override double GetArea()
-    {
-        // Área del rombo = (diagonal1 * diagonal2) / 2
-        return (_d1 * _d2) / 2;
-    }
+        // Constructor
+        public Rhombus(string name, double a, double d1, double d2) : base(name, a)
+        {
+            _d1 = ValidateD1(d1);
+            _d2 = ValidateD2(d2);
+        }
 
-    public override double GetPerimeter()
-    {
-        // Perímetro del rombo = 4 * lado
-        return 4 * _a;
-    }
+        // Methods
+        public override double GetArea()
+        {
+            return (_d1 * _d2) / 2;
+        }
 
-    // Validation
-    private double ValidateD1(double d1)
-    {
-        if (d1 <= 0)
-            throw new ArgumentOutOfRangeException(nameof(d1), "Diagonal 1 must be positive");
-        return d1;
-    }
+        public override double GetPerimeter()
+        {
+            return 4 * _a;
+        }
 
-    private double ValidateD2(double d2)
-    {
-        if (d2 <= 0)
-            throw new ArgumentOutOfRangeException(nameof(d2), "Diagonal 2 must be positive");
-        return d2;
+        // Validation
+        private double ValidateD1(double d1)
+        {
+            if (d1 <= 0)
+                throw new ArgumentOutOfRangeException(nameof(d1), "Diagonal 1 must be positive");
+            return d1;
+        }
+
+        private double ValidateD2(double d2)
+        {
+            if (d2 <= 0)
+                throw new ArgumentOutOfRangeException(nameof(d2), "Diagonal 2 must be positive");
+            return d2;
+        }
     }
 }

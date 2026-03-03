@@ -1,49 +1,43 @@
-﻿namespace InheritanceWorkshop.Backend;
+﻿using System;
 
-public class Trapeze : Triangle  // Hereda de Triangle
+namespace GeometricFigures.Backend
 {
-    // FIELDS - Solo lo específico de Trapeze
-    protected double _d;  // Base mayor o lado adicional del trapecio
-
-    // PROPERTIES
-    public double D
+    public class Trapeze : Triangle
     {
-        get => _d;
-        set => _d = ValidateD(value);
-    }
+        // Fields
+        protected double _d;
 
-    // CONSTRUCTOR
-    public Trapeze(double a, double b, double c, double h, double d)
-        : base(a, b, c, h)  // Llama al constructor de Triangle
-    {
-        _d = ValidateD(d);  // Valida y asigna D
-    }
+        // Properties
+        public double D
+        {
+            get => _d;
+            set => _d = ValidateD(value);
+        }
 
-    // METHODS
-    public override double GetArea()
-    {
-        // Área del trapecio: ((Base mayor + Base menor) * Altura) / 2
-        // Asumiendo que:
-        // - Triangle tiene _c como base menor
-        // - _d es la base mayor
-        // - Triangle tiene _h como altura
-        return ((_d + _c) * _h) / 2;
-    }
+        // Constructor
+        public Trapeze(string name, double a, double b, double c, double h, double d)
+            : base(name, a, b, c, h)
+        {
+            _d = ValidateD(d);
+        }
 
-    public override double GetPerimeter()
-    {
-        // Perímetro del trapecio: suma de los 4 lados
-        // Asumiendo que Triangle tiene:
-        // - _a, _b, _c como tres lados
-        // - _d es el cuarto lado
-        return _a + _b + _c + _d;
-    }
+        // Methods
+        public override double GetArea()
+        {
+            return ((_c + _d) * _h) / 2;
+        }
 
-    // VALIDATION METHODS
-    private double ValidateD(double d)
-    {
-        if (d <= 0)
-            throw new ArgumentOutOfRangeException(nameof(d), "Side D must be positive");
-        return d;
+        public override double GetPerimeter()
+        {
+            return _a + _b + _c + _d;
+        }
+
+        // Validation
+        private double ValidateD(double d)
+        {
+            if (d <= 0)
+                throw new ArgumentOutOfRangeException(nameof(d), "Side D must be positive");
+            return d;
+        }
     }
 }

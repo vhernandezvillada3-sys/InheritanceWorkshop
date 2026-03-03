@@ -1,53 +1,46 @@
-﻿
-using InheritanceWorkshop.Backend;
+﻿using System;
+using System.Collections.Generic;
+using GeometricFigures.Backend;
 
-namespace InheritanceWorkshop.Frontend;
-
-class Program
+namespace GeometricFigures.Frontend
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("=== TESTING ALL GEOMETRIC FIGURES ===\n");
-
-        try
+        static void Main(string[] args)
         {
-            var figures = new List<GeometricFigure>();
+            Console.WriteLine("=== GEOMETRIC FIGURES CALCULATOR ===\n");
 
-            // Square
-            figures.Add(new Square(4) { Name = "Square" });
-
-            // Rectangle
-            figures.Add(new Rectangle(5, 3) { Name = "Rectangle" });
-
-            // Parallelogram
-            figures.Add(new Parallelogram(6, 4, 3) { Name = "Parallelogram" });
-
-            // Rhombus
-            figures.Add(new Rhombus(5, 8, 6) { Name = "Rhombus" });
-
-            // TRIANGLE - DESCOMENTAR
-            figures.Add(new Triangle(3, 4, 5, 4) { Name = "Triangle" });
-
-            // TRAPEZE - DESCOMENTAR
-            figures.Add(new Trapeze(4, 4.5, 3, 4, 5) { Name = "Trapezoid" });
-
-            // CIRCLE - DESCOMENTAR
-            figures.Add(new Circle(2.5) { Name = "Circle" });
-
-            foreach (var figure in figures)
+            try
             {
-                Console.WriteLine($"Figure: {figure.Name}");
-                Console.WriteLine($"Area: {figure.GetArea():F2}");
-                Console.WriteLine($"Perimeter: {figure.GetPerimeter():F2}");
-                Console.WriteLine();
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"ERROR: {ex.Message}");
-        }
+                // Crear las figuras con parámetros con nombre
+                var circle = new Circle(name: nameof(Circle), r: 5);
+                var square = new Square(name: nameof(Square), a: 10);
+                var rhombus = new Rhombus(name: nameof(Rhombus), a: 5, d1: 7, d2: 10);
+                var kite = new Kite(name: nameof(Kite), a: 7, b: 8, d1: 6, d2: 5);
+                var rectangle = new Rectangle(name: nameof(Rectangle), a: 4.568, b: 67.789);
+                var parallelogram = new Parallelogram(name: nameof(Parallelogram), a: 45.67, b: 78.89, h: 27.89);
+                var triangle = new Triangle(name: nameof(Triangle), a: 45.56, b: 34.67, c: 23.78, h: 3.89);
+                var trapeze = new Trapeze(name: nameof(Trapeze), a: 10, b: 20, c: 15, h: 30, d: 25);
 
-        Console.WriteLine("\nPress any key to exit...");
-        Console.ReadKey();
+                // Lista de figuras
+                var figures = new List<GeometricFigure>
+                {
+                    circle, square, rhombus, kite, rectangle, parallelogram, triangle, trapeze
+                };
+
+                // Mostrar cada figura
+                foreach (var figure in figures)
+                {
+                    Console.WriteLine(figure);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERROR: {ex.Message}");
+            }
+
+            Console.WriteLine("\nPress any key to exit...");
+            Console.ReadKey();
+        }
     }
 }

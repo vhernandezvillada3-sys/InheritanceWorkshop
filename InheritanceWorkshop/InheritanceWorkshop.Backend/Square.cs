@@ -1,41 +1,38 @@
-﻿
-namespace InheritanceWorkshop.Backend;
+﻿using System;
 
-public class Square : GeometricFigure
+namespace GeometricFigures.Backend
 {
-    // Fields
-    protected double _a;  // Lado 1
-
-
-    // Properties
-    public double A
+    public class Square : GeometricFigure
     {
-        get => _a;
-        set => _a = ValidateA(value);
-    }
+        protected double _a;
 
-    // Constructor
-    public Square(double a)
-    {
-        _a = ValidateA(a);
-    }
+        public double A
+        {
+            get => _a;
+            set => _a = ValidateA(value);
+        }
 
-    // Methods
-    public override double GetArea()
-    {
-        return _a * _a;
-    }
+        public Square(string name, double a)
+        {
+            Name = name;
+            _a = ValidateA(a);
+        }
 
-    public override double GetPerimeter()
-    {
-        return 4 * _a;
-    }
+        public override double GetArea()
+        {
+            return _a * _a;
+        }
 
-    // Validation
-    private double ValidateA(double a)
-    {
-        if (a <= 0)
-            throw new ArgumentOutOfRangeException(nameof(a), "Side must be positive");
-        return a;
+        public override double GetPerimeter()
+        {
+            return 4 * _a;
+        }
+
+        private double ValidateA(double a)
+        {
+            if (a <= 0)
+                throw new ArgumentOutOfRangeException(nameof(a), "Side must be positive");
+            return a;
+        }
     }
 }
