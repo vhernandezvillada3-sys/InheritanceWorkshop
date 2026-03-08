@@ -4,24 +4,24 @@ namespace GeometricFigures.Backend
 {
     public class Circle : GeometricFigure
     {
-        // Fields
+        // FIELDS
         protected double _r;
 
-        // Properties
+        // PROPERTIES
         public double R
         {
             get => _r;
-            set => _r = ValidateR(value);
+            set => _r = value;  // ← SOLO ASIGNACIÓN, SIN VALIDACIÓN
         }
 
-        // Constructor
+        // CONSTRUCTOR
         public Circle(string name, double r)
         {
             Name = name;
-            _r = ValidateR(r);
+            _r = ValidateR(r);  // ← VALIDACIÓN SOLO AQUÍ
         }
 
-        // Methods
+        // METHODS (públicos / override)
         public override double GetArea()
         {
             return Math.PI * _r * _r;
@@ -32,7 +32,7 @@ namespace GeometricFigures.Backend
             return 2 * Math.PI * _r;
         }
 
-        // Validation
+        // METHODS (privados / validación)
         private double ValidateR(double r)
         {
             if (r <= 0)

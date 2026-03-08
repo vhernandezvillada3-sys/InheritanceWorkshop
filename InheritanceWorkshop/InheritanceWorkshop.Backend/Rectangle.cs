@@ -4,23 +4,23 @@ namespace GeometricFigures.Backend
 {
     public class Rectangle : Square
     {
-        // Fields
+        // FIELDS
         protected double _b;
 
-        // Properties
+        // PROPERTIES
         public double B
         {
             get => _b;
-            set => _b = ValidateB(value);
+            set => _b = value;  // ← SOLO ASIGNACIÓN, SIN VALIDACIÓN
         }
 
-        // Constructor
+        // CONSTRUCTOR
         public Rectangle(string name, double a, double b) : base(name, a)
         {
-            _b = ValidateB(b);
+            _b = ValidateB(b);  // ← VALIDACIÓN SOLO AQUÍ
         }
 
-        // Methods
+        // METHODS (públicos / override)
         public override double GetArea()
         {
             return _a * _b;
@@ -31,7 +31,7 @@ namespace GeometricFigures.Backend
             return 2 * (_a + _b);
         }
 
-        // Validation
+        // METHODS (privados / validación)
         private double ValidateB(double b)
         {
             if (b <= 0)

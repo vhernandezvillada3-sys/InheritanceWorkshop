@@ -4,23 +4,23 @@ namespace GeometricFigures.Backend
 {
     public class Kite : Rhombus
     {
-        // Fields
+        // FIELDS
         protected double _b;
 
-        // Properties
+        // PROPERTIES
         public double B
         {
             get => _b;
-            set => _b = ValidateB(value);
+            set => _b = value;  // ← SOLO ASIGNACIÓN, SIN VALIDACIÓN
         }
 
-        // Constructor
+        // CONSTRUCTOR
         public Kite(string name, double a, double b, double d1, double d2) : base(name, a, d1, d2)
         {
-            _b = ValidateB(b);
+            _b = ValidateB(b);  // ← VALIDACIÓN SOLO AQUÍ
         }
 
-        // Methods
+        // METHODS (públicos / override)
         public override double GetArea()
         {
             return (_d1 * _d2) / 2;
@@ -31,7 +31,7 @@ namespace GeometricFigures.Backend
             return 2 * (_a + _b);
         }
 
-        // Validation
+        // METHODS (privados / validación)
         private double ValidateB(double b)
         {
             if (b <= 0)

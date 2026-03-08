@@ -4,31 +4,31 @@ namespace GeometricFigures.Backend
 {
     public class Rhombus : Square
     {
-        // Fields
+        // FIELDS
         protected double _d1;
         protected double _d2;
 
-        // Properties
+        // PROPERTIES
         public double D1
         {
             get => _d1;
-            set => _d1 = ValidateD1(value);
+            set => _d1 = value;  // ← SOLO ASIGNACIÓN
         }
 
         public double D2
         {
             get => _d2;
-            set => _d2 = ValidateD2(value);
+            set => _d2 = value;  // ← SOLO ASIGNACIÓN
         }
 
-        // Constructor
+        // CONSTRUCTOR
         public Rhombus(string name, double a, double d1, double d2) : base(name, a)
         {
             _d1 = ValidateD1(d1);
             _d2 = ValidateD2(d2);
         }
 
-        // Methods
+        // METHODS (públicos / override)
         public override double GetArea()
         {
             return (_d1 * _d2) / 2;
@@ -39,7 +39,7 @@ namespace GeometricFigures.Backend
             return 4 * _a;
         }
 
-        // Validation
+        // METHODS (privados / validación)
         private double ValidateD1(double d1)
         {
             if (d1 <= 0)

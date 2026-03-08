@@ -4,26 +4,26 @@ namespace GeometricFigures.Backend
 {
     public class Parallelogram : Rectangle
     {
-        // Fields
+        // FIELDS
         protected double _h;
 
-        // Properties
+        // PROPERTIES
         public double H
         {
             get => _h;
-            set => _h = ValidateH(value);
+            set => _h = value;  // ← SOLO ASIGNACIÓN, SIN VALIDACIÓN
         }
 
-        // Constructor
+        // CONSTRUCTOR
         public Parallelogram(string name, double a, double b, double h) : base(name, a, b)
         {
-            _h = ValidateH(h);
+            _h = ValidateH(h);  // ← VALIDACIÓN SOLO AQUÍ
         }
 
-        // Methods
+        // METHODS (públicos / override)
         public override double GetArea()
         {
-            return _b * _h;
+            return _b * _h;  // ← Revisar si debe ser _a * _h
         }
 
         public override double GetPerimeter()
@@ -31,7 +31,7 @@ namespace GeometricFigures.Backend
             return 2 * (_a + _b);
         }
 
-        // Validation
+        // METHODS (privados / validación)
         private double ValidateH(double h)
         {
             if (h <= 0)

@@ -4,24 +4,24 @@ namespace GeometricFigures.Backend
 {
     public class Trapeze : Triangle
     {
-        // Fields
+        // FIELDS
         protected double _d;
 
-        // Properties
+        // PROPERTIES
         public double D
         {
             get => _d;
-            set => _d = ValidateD(value);
+            set => _d = value;  // ← SOLO ASIGNACIÓN, SIN VALIDACIÓN
         }
 
-        // Constructor
+        // CONSTRUCTOR
         public Trapeze(string name, double a, double b, double c, double h, double d)
             : base(name, a, b, c, h)
         {
-            _d = ValidateD(d);
+            _d = ValidateD(d);  // ← VALIDACIÓN SOLO AQUÍ
         }
 
-        // Methods
+        // METHODS (públicos / override)
         public override double GetArea()
         {
             return ((_b + _d) * _h) / 2;
@@ -32,7 +32,7 @@ namespace GeometricFigures.Backend
             return _a + _b + _c + _d;
         }
 
-        // Validation
+        // METHODS (privados / validación)
         private double ValidateD(double d)
         {
             if (d <= 0)
